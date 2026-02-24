@@ -1,0 +1,26 @@
+h1 {
+    background-color: #000000;
+    text-align: left;
+    font-family: cursive;
+    color: rgb(255, 255, 255);
+}
+
+h2 {
+    background-color: blueviolet;
+    color: #ffff;
+    text-align: center;
+    font-style: italic;
+    font-family: cursive;
+}
+
+h3 {
+    background-color: rgb(140, 187, 250);
+    color: #491777;
+    text-align: right;
+    text-decoration: underline;
+    font-family: cursive;
+}
+
+span {
+    color: #5bd5eb;
+}
