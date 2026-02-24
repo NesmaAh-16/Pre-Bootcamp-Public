@@ -1,0 +1,44 @@
+main {
+    margin: 64px 40px;
+}
+
+#search {
+    display: block;
+    background-color: #faf6f6;
+    color: #31a1a1;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-radius: 14px;
+    border: 2px solid #31a1a1;
+    padding: 3px 45px 4px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#plus {
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(118, 223, 198, 1);
+    margin: 10px 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+}
+
+#account {
+    display: block;
+    color: #f1efef;
+    background-color: #3b82f6;
+    border: 2px solid #0000009e;
+    box-shadow: 3px 3px 0 black;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 8px 24px;
+}
