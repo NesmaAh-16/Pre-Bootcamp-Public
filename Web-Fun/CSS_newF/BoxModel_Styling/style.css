@@ -1,26 +1,30 @@
 h1 {
     background-color: #000000;
     text-align: left;
-    font-family: cursive;
-    color: rgb(255, 255, 255);
+    font-family: math;
+    color: rgba(255, 255, 255,1);
 }
 
 h2 {
-    background-color: blueviolet;
-    color: #ffff;
+    background-color:#7844a9;
+    color: #f7f3f3;
     text-align: center;
     font-style: italic;
-    font-family: cursive;
+    font-family: monospace;
+    padding: 5px 0;
 }
 
 h3 {
-    background-color: rgb(140, 187, 250);
-    color: #491777;
+    background-color: rgba(155, 198, 255,1);
+    color: #5c298b;
     text-align: right;
     text-decoration: underline;
-    font-family: cursive;
+    font-family: monospace;
+    font-size: 20px;
+    padding-right: 12px;
+    padding-bottom: 5px;
 }
 
 span {
-    color: #5bd5eb;
+    color: aqua;
 }
