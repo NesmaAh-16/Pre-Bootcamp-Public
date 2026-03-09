@@ -1,0 +1,60 @@
+body {
+    font-family: Roboto;
+    color: rgb(255, 255, 255);
+}
+
+li {
+    list-style-type: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav {
+    display: flex;
+    padding: 10px 15px;
+    background: #4a4945;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+.nav-links {
+    flex: 0 1 auto;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-title {
+    flex: 1;
+    margin: 0;
+    font-size: 1.5em;
+
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 0.80rem;
+}
+
+#diff {
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.btn {
+    background-color: #62c5e3;
+    color: white;
+    border: 2px solid #0000009e;
+    box-shadow: 3px 3px 0 black;
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 400;
+}
