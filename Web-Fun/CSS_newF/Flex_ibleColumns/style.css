@@ -1,0 +1,29 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.col,
+.col-2,
+.col-3 {
+    background-color: #619b9b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.col {
+    flex: 1 1 150px;
+}
+
+.col-2 {
+    flex: 2 1 300px;
+}
+
+.col-3 {
+    flex: 3 1 450px;
+}
