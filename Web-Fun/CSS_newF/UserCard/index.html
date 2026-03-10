@@ -4,34 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Card</title>
+    <title>UserCard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="card-container">
-        <div class="card-header"></div>
-        <div class="card-body">
-            <div class="user-img-container">
-                <img src="circle-user-solid.png" alt="User Image">
-            </div>
-            <div class="user-info">
-                <h1>Jane Doe</h1>
-                <div class="location">
-                    <img src="location-dot-solid.png" alt="location" class="icon-small">
-                    <span>Seattle</span>
+    <main>
+        <div class="user-card">
+            <div class="card-header-box"></div>
+            <div class="card-content">
+                <div class="profile-img">
+                    <img src="circle-user-solid.png" alt="User">
                 </div>
-                <p class="description">
-                    Developer | Engineer | Problem Solver <br>
-                    Master of shadows and the Internet!
-                </p>
-                <a href="#" class="edit-link">
-                    <img src="gear-solid.png" alt="settings" class="icon-small">
-                    edit profile
-                </a>
+                <h1>Jane Doe</h1>
+                <p class="location"><i class="fa-solid fa-location-dot"></i> Seattle</p>
+                <p class="bio">Developer | Engineer | Problem Solver <br> Master of shadows and the Internet!</p>
+                <a href="#" class="edit-link"><i class="fa-solid fa-gear"></i> edit profile</a>
             </div>
         </div>
-    </div>
+    </main>
 </body>
 
 </html>

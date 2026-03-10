@@ -1,98 +1,71 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     font-family: monospace;
 }
 
 body {
     background-color: #f5f5f5;
+}
+
+main {
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+    padding: 100px;
 }
 
-.card-container {
-    width: 95%;
-    max-width: 450px;
-    background-color: white;
-    border: 1px solid #b3b3b3;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
+.user-card {
+    background: white;
+    border: 1px solid #ccc;
+    width: 550px;
+    position: absolute;
 }
 
-.card-header {
-    background-color: #4fc9dd;
+.card-header-box {
+    background-color: #24a1b5;
     height: 100px;
 }
 
-.card-body {
-    padding: 0 25px 25px 25px;
-    position: relative;
+.card-content {
+    padding: 0 20px 20px;
 }
 
-
-.user-img-container {
+.profile-img {
     width: 100px;
     height: 100px;
-    background-color: white;
-    border-radius: 50%;
+    background: white;
     border: 4px solid white;
-    outline: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 50%;
     margin-top: -50px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.user-img-container img {
+.profile-img img {
     width: 100%;
     height: 100%;
 
 }
 
-.user-info h1 {
-    margin: 10px 0 5px 0;
-    font-size: 1.8rem;
-    color: #000;
+.user-card h1 {
+    margin: 10px 0 5px;
+    font-size: 30px;
 }
-
 
 .location {
-    font-size: 1rem;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.bio {
+    font-size: 14px;
     color: #000;
     margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-
-.icon-small {
-    width: 16px;
-    height: 16px;
-
-}
-
-.description {
-    color: #333;
-    line-height: 1.4;
-    font-size: 0.95rem;
-    margin-bottom: 20px;
+    font-weight: bold;
 }
 
 .edit-link {
-    text-decoration: underline;
     color: #0056b3;
     font-weight: bold;
-    font-size: 0.9rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.edit-link:hover {
-    color: #24a1b5;
+    font-size: 13px;
 }
