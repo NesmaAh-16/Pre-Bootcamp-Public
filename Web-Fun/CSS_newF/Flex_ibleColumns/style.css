@@ -1,6 +1,9 @@
+*{
+margin: 0 auto;
+
+}
 .row {
     display: flex;
-    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 10px;
 }
@@ -17,13 +20,13 @@
 }
 
 .col {
-    flex: 1 1 150px;
+    flex: 1;
 }
 
 .col-2 {
-    flex: 2 1 300px;
+    flex: 2;
 }
 
 .col-3 {
-    flex: 3 1 450px;
+    flex: 3;
 }
