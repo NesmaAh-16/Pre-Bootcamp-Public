@@ -13,13 +13,14 @@ main {
     display: flex;
     justify-content: center;
     padding: 100px;
+   
 }
 
 .user-card {
     background: white;
     border: 1px solid #ccc;
     width: 550px;
-    position: absolute;
+    
 }
 
 .card-header-box {
@@ -38,12 +39,6 @@ main {
     border: 4px solid white;
     border-radius: 50%;
     margin-top: -50px;
-}
-
-.profile-img img {
-    width: 100%;
-    height: 100%;
-
 }
 
 .user-card h1 {
