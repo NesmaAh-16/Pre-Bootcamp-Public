@@ -29,7 +29,6 @@ img {
     justify-content: space-around;
     margin: 0 30px 30px;
     box-sizing: border-box;
-    flex: 3;
 }
 
 .second {
@@ -39,7 +38,6 @@ img {
     margin: 0 30px 30px;
     gap: 100px;
     box-sizing: border-box;
-    flex: 3;
 }
 
 .third {
@@ -48,7 +46,6 @@ img {
     justify-content: space-around;
     margin: 0 30px 30px;
     box-sizing: border-box;
-    flex: 3;
 }
 
 p {
