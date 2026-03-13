@@ -1,17 +1,21 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
     font-family: monospace;
 }
 
 body {
     background-color: #f5f5f5;
+    overflow-x: auto;
 }
 
 .navbar {
     background-color: #000;
     color: white;
-    padding: 10px 10px;
+    padding: 15px 0;
+    width: 100%;
+    min-width: max-content;
 }
 
 .nav-box {
@@ -19,25 +23,29 @@ body {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    padding: 0 30px;
+    padding: 0 20px;
+    flex-wrap: nowrap;
 }
 
 .nav-name {
-    flex: 1;
     font-size: 24px;
+    margin-right: 40px;
+    white-space: nowrap;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 20px;
-    padding: 0 320px 0 0;
+    gap: 25px;
+    flex-wrap: nowrap;
+    margin-right: 20px;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
     font-size: 14px;
+    white-space: nowrap;
 }
 
 .nav-links a.active {
@@ -48,12 +56,14 @@ body {
     background-color: #24a1b5;
     color: white;
     border: 2px solid black;
-    padding: 2px 5px;
-    margin-left: 40px;
+    padding: 6px 15px;
     font-weight: bold;
     box-shadow: 3px 3px 0px #141414;
     cursor: pointer;
     font-size: 15px;
+    margin-left: auto;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .container {
@@ -62,15 +72,15 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 0 30px;
+    padding: 0 20px;
 }
 
 .left-side {
-    flex: 2;
+    flex: 2 1 500px;
 }
 
 .right-side {
-    flex: 1;
+    flex: 1 1 250px;
 }
 
 .user-card {
@@ -103,19 +113,24 @@ body {
 
 .location {
     margin-bottom: 10px;
-    font-size: 17px;
 }
 
 .bio {
     font-size: 14px;
-    color: #000;
     margin-bottom: 15px;
+    line-height: 1.5;
 }
 
 .edit-link {
     color: #0056b3;
     font-weight: bold;
     font-size: 13px;
+
+    text-decoration: underline;
+}
+
+.edit-link i {
+    margin-right: 5px;
 }
 
 .info-box {
@@ -127,9 +142,11 @@ body {
 .box-header {
     background-color: #333;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-weight: bold;
-    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .box-body {
@@ -141,10 +158,6 @@ body {
     margin-bottom: 5px;
 }
 
-.box-body p {
-    font-weight: bold;
-}
-
 .date {
     color: #666;
     font-size: 14px;
@@ -153,7 +166,7 @@ body {
 
 .plus {
     background-color: #ccc;
-    color: #000000;
+    color: #000;
     border-radius: 50%;
     padding: 2px 8px;
     font-size: 12px;
@@ -162,28 +175,28 @@ body {
 .user-list {
     list-style: none;
     padding: 10px 20px;
-    font-weight: bold;
 }
 
 .user-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-size: 14px;
+    font-weight: bold;
 }
 
 .user-item {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 }
 
 .user-item img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #eee;
+    background-color: #eee;
 }
 
 .check-icons {
@@ -192,18 +205,17 @@ body {
     font-size: 20px;
 }
 
-.icon-yes {
-    color: #888;
-}
-
+.icon-yes,
 .icon-no {
     color: #888;
+    cursor: pointer;
 }
 
 .view-link {
-    border-top: 1px solid #eee;
+    border-top: 1px solid #ccc;
     padding: 10px 20px;
     color: #0056b3;
-    font-size: 15px;
     display: block;
+    text-decoration: underline;
+    font-weight: bold;
 }
