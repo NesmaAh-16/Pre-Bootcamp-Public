@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojonary</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <main>
+        <nav>
+            <h1 class="name">Dojonary</h1>
+            <input class="search" placeholder="Search"></input>
+            <button class="login" onclick="changInnerTxt(this)">Login</button>
+        </nav>
+        <div class="container">
+            <div class="left-side">
+                <div class="ninja-box">
+                    <div class="ninja-info">
+                        <h2>ninja</h2>
+                        <em>noun</em>
+                        <p>Plural: <em>ninjas</em></p>
+                        <button class="likes" onclick="showAlert()">13 likes</button>
+                    </div>
+                    <div class="ninja-bio">
+                        <p>A practitoner skilled in the
+                            <a href="">Japanese</a> art of <a href="">ninjutsu</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="ninja-box">
+                    <div class="ninja-info">
+                        <h2>ninja</h2>
+                        <em>noun</em>
+                        <p>Plural: <em>ninjas</em></p>
+                        <button class="likes" onclick="showAlert()">37 likes</button>
+                    </div>
+                    <div class="ninja-bio">
+                        <p>A programmer who breaks down problems with
+                            <a href="">Zen</a>-like focus
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="right-box">
+                    <h3>Dojonary is defined by <span>YOU</span>
+                    </h3>
+                    <button class="definition" onclick="remove(this)">Add Definition</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    border: 2px solid black;
+    box-shadow: 2px 2px black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a {
+    color: rgb(59, 151, 231);
+}
+
+main {
+    width: 80%;
+}
+
+nav {
+    width: 100%;
+    background-color: rgb(194, 192, 192);
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+h1 {
+    margin: 10px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.name {
+    padding: 8px;
+}
+
+.search {
+    background-color: white;
+    border: 2.5px solid black;
+    width: 45%;
+    padding: 4pt;
+}
+
+.login {
+    color: white;
+    background-color: rgb(60, 114, 214);
+    padding: 4px 5px;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.left-side {
+    flex: 2 1;
+
+}
+
+.right-side {
+    flex: 1 1;
+    border: 2.5px solid black;
+    padding: 5px;
+    margin: 20px 0 0;
+}
+
+.ninja-box {
+    border: 2.5px solid black;
+    margin: 20px 15px 0 0;
+    padding: 12px;
+    display: flex;
+}
+
+.ninja-info {
+    flex: 1 1;
+    margin: 0 10px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+.ninja-bio {
+    flex: 2 1;
+    font-weight: bold;
+}
+
+.likes {
+    background-color: rgb(243, 195, 90);
+    padding: 4px 6px;
+}
+
+.right-box {
+    padding: 10px 0;
+
+
+}
+
+h3 {
+    margin: 10px;
+
+}
+
+
+.definition {
+    background-color: rgb(67, 165, 88);
+    padding: 4px 6px;
+    margin: 10px;
+    width: 80%;
+}
