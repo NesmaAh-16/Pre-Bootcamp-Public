@@ -1,15 +1,12 @@
-//Alert
 function loadingAlert() {
     alert("Loading weather report...");
 }
 
-//Dismiss
 function acceptCookies() {
     var element = document.querySelector("#cookie-bar");
     element.remove();
 }
 
-//Temperature 
 function cToF(temp) {
     return Math.round(9 / 5 * temp + 32);
 }
