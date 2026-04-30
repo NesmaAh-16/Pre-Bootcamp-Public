@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fruit Gallery</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .fruit-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px;
+            text-align: center;
+        }
+        img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Our Fresh Fruits</h1>
+    
+    <div class="fruit-container">
+        <div>
+            <img src="{{ url_for('static', filename='img/apple.png') }}" alt="Apple">
+            <p>Apple</p>
+        </div>
+        <div>
+            <img src="{{ url_for('static', filename='img/blackberry.png') }}" alt="Blackberry">
+            <p>Blackberry</p>
+        </div>
+        <div>
+            <img src="{{ url_for('static', filename='img/raspberry.png') }}" alt="Raspberry">
+            <p>Raspberry</p>
+        </div>
+        <div>
+            <img src="{{ url_for('static', filename='img/strawberry.png') }}" alt="Strawberry">
+            <p>Strawberry</p>
+        </div>
+    </div>
+
+    <p style="text-align: center;">
+        <a href="/">Go Back to Store</a>
+    </p>
+</body>
+</html>

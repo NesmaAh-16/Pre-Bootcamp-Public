@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+</head>
+<body>
+    <h1>Thank you for your order!</h1>
+    <p>We ordered {{ total }} items for you and charged your student account on {{ timestamp }}.</p>
+    
+    <h3>You've ordered:</h3>
+    <ul>
+        <li>Strawberry: {{ s_qty }}</li>
+        <li>Raspberry: {{ r_qty }}</li>
+        <li>Apple: {{ a_qty }}</li>
+    </ul>
+
+    <h3>Your Information:</h3>
+    <p>Name: {{ name }}</p>
+    <p>Student ID: {{ id }}</p>
+    
+    <a href="/">Go Back</a>
+</body>
+</html>

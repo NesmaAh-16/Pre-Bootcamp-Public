@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Great Number Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Great Number Game!</h1>
+        <p>I am thinking of a number between 1 and 100</p>
+        <p>Take a guess! (Attempts: {{ session['attempts'] }}/5)</p>
+
+        <!-- Ninja Bonus: Status boxes -->
+        {% if session['status'] == 'too low' %}
+            <div class="box red">Too low!</div>
+        {% elif session['status'] == 'too high' %}
+            <div class="box red">Too high!</div>
+        {% elif session['status'] == 'lose' %}
+            <div class="box red">You Lose!<br>The number was {{ session['target'] }}
+                <a href="/reset"><button>Play Again!</button></a>
+            </div>
+        {% elif session['status'] == 'correct' %}
+            <div class="box green">
+                {{ session['target'] }} was the number!<br>
+                <form action="/submit_score" method="POST">
+                    <input type="text" name="name" placeholder="Enter your name" required>
+                    <input type="submit" value="Submit Score">
+                </form>
+                <a href="/reset"><button>Play Again!</button></a>
+            </div>
+        {% endif %}
+
+        <!-- Only show input form if game is active -->
+        {% if session['status'] != 'correct' and session['status'] != 'lose' %}
+            <form action="/guess" method="POST">
+                <input type="number" name="guess" min="1" max="100" required>
+                <input type="submit" value="Submit">
+            </form>
+        {% endif %}
+        
+        <p><a href="/leaderboard">View Leaderboard</a></p>
+    </div>
+</body>
+</html>

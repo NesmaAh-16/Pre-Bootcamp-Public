@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding-top: 50px; text-align: center; }
+        .counter-val { font-size: 3rem; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Counter</h1>
+        
+        <div class="counter-val badge bg-primary">
+            {{ session['count'] }} times
+        </div>
+
+        <div class="mt-4">
+            
+            <a href="/add_two" class="btn btn-info">+2</a>
+            <a href="/reset" class="btn btn-warning">Reset Counter</a>
+            <a href="/destroy_session" class="btn btn-danger">Destroy Session</a>
+        </div>
+
+        <hr class="my-5 w-50 mx-auto">
+
+        
+        <div class="card mx-auto" style="max-width: 300px;">
+            <div class="card-body">
+                <form action="/increment" method="POST">
+                    <label class="form-label">Custom Increment:</label>
+                    <div class="input-group">
+                        <input type="number" name="amount" class="form-control" value="1" min="1">
+                        <button class="btn btn-outline-secondary" type="submit">Go</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+   
+        <p class="text-muted mt-4">
+            Total actual page visits: <strong>{{ session['visits'] }}</strong>
+        </p>
+    </div>
+</body>
+</html>
