@@ -1,0 +1,27 @@
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.container {
+    display: inline-block;
+}
+
+.label {
+    border: 2px solid black;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.time-box {
+    border: 2px solid black;
+    padding: 20px 80px;
+}
+
+h1 {
+    font-size: 3em;
+    margin: 10px 0;
+}

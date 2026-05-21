@@ -15,7 +15,7 @@ def index():
         session['target'] = random.randint(1, 100)
         session['attempts'] = 0
         session['status'] = None # Too High, Too Low, Correct, or You Lose
-    
+    print(f"this is the guess number from the server{session['target']}")
     return render_template("index.html")
 
 @app.route('/guess', methods=['POST'])
