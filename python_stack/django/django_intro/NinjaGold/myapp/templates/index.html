@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ninja Gold</title>
+    <style>
+        .location-container { display: flex; justify-content: space-around; margin-top: 20px; }
+        .location-box { border: 2px solid black; padding: 20px; text-align: center; width: 20%; }
+        .log-box { height: 200px; overflow-y: scroll; border: 1px solid black; padding: 10px; margin-top: 20px; }
+        .green { color: green; }
+        .red { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Your Gold: <strong>{{ request.session.gold }}</strong></h1>
+    <a href="/reset">Reset Game</a>
+
+    <div class="location-container">
+        <!-- Farm -->
+        <div class="location-box">
+            <h2>Farm</h2>
+            <p>(earns 10-20 gold)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="farm">
+                <button type="submit">Find Gold!</button>
+            </form>
+        </div>
+        <!-- Repeat for Cave, House, Quest -->
+        <div class="location-box">
+            <h2>Cave</h2>
+            <p>(earns 10-20 gold)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="cave">
+                <button type="submit">Find Gold!</button>
+            </form>
+        </div>
+        <div class="location-box">
+            <h2>House</h2>
+            <p>(earns 10-20 gold)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="house">
+                <button type="submit">Find Gold!</button>
+            </form>
+        </div>
+        <div class="location-box">
+            <h2>Quest</h2>
+            <p>(earns/takes 0-50 gold)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="quest">
+                <button type="submit">Find Gold!</button>
+            </form>
+        </div>
+    </div>
+
+    <h3>Activities:</h3>
+    <div class="log-box">
+        {% for activity in request.session.activities %}
+            <p class="{{ activity.class }}">{{ activity.message }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

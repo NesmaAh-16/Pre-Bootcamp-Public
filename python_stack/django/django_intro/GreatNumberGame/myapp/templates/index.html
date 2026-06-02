@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Great Number Game</title>
+    <style>
+        body { text-align: center; font-family: sans-serif; margin-top: 50px; }
+        .box { width: 250px; height: 250px; margin: 20px auto; display: flex; 
+               flex-direction: column; justify-content: center; align-items: center; 
+               color: white; font-weight: bold; border: 2px solid black; }
+        .red { background-color: #df0000; }
+        .green { background-color: #008000; }
+        .yellow { background-color: #ffd700; color: black; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Great Number Game!</h1>
+    <p>I am thinking of a number between 1 and 100. Take a guess!</p>
+    <p>Attempts: {{ request.session.attempts }} / 5</p>
+
+    <!-- UI Logic based on Session Status -->
+    {% if request.session.status == 'too_high' %}
+        <div class="box red"><h2>Too High!</h2></div>
+    {% elif request.session.status == 'too_low' %}
+        <div class="box red"><h2>Too Low!</h2></div>
+    {% elif request.session.status == 'win' %}
+        <div class="box green">
+            <h2>{{ request.session.target }} was the number!</h2>
+            <form action="/submit" method="post">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Your Name" required>
+                <button type="submit">Submit to Leaderboard</button>
+            </form>
+            <br>
+            <a href="/reset"><button>Play again!</button></a>
+        </div>
+    {% elif request.session.status == 'lose' %}
+        <div class="box yellow">
+            <h2>You Lose!</h2>
+            <p>The number was {{ request.session.target }}</p>
+            <a href="/reset"><button>Try again!</button></a>
+        </div>
+    {% endif %}
+
+    <!-- Hide Guess Form if Game is over -->
+    {% if request.session.status != 'win' and request.session.status != 'lose' %}
+        <form action="/guess" method="post">
+            {% csrf_token %}
+            <input type="number" name="guess" min="1" max="100" required>
+            <br><br>
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+
+    <br>
+    <a href="/leaderboard">View Leaderboard</a>
+</body>
+</html>
