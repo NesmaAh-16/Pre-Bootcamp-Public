@@ -19,7 +19,7 @@
     <p>I am thinking of a number between 1 and 100. Take a guess!</p>
     <p>Attempts: {{ request.session.attempts }} / 5</p>
 
-    <!-- UI Logic based on Session Status -->
+    <!-- Session Status -->
     {% if request.session.status == 'too_high' %}
         <div class="box red"><h2>Too High!</h2></div>
     {% elif request.session.status == 'too_low' %}

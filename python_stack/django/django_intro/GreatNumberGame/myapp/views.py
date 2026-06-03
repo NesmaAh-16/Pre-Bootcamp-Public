@@ -2,13 +2,16 @@ import random
 from django.shortcuts import render, redirect
 
 def index(request):
-    # Initialize game if target doesn't exist
+    # Initialize game
     if 'target' not in request.session:
         request.session['target'] = random.randint(1, 100)
         request.session['attempts'] = 0
         request.session['status'] = None # 'too_high', 'too_low', 'win', 'lose'
-        request.session['winners'] = request.session.get('winners', []) # Sensei: persistent leaderboard
+        request.session['winners'] = request.session.get('winners', [])
+    print(f"the number is:{request.session['target']}")
     return render(request, "index.html")
+
+
 
 def guess(request):
     if request.method == "POST":
@@ -26,11 +29,10 @@ def guess(request):
         # Sensei Bonus: Limit to 5 attempts
         if request.session['attempts'] >= 5 and request.session['status'] != 'win':
             request.session['status'] = 'lose'
-
     return redirect('/')
 
 def reset(request):
-    # Clear game state but preserve leaderboard
+    # Clear game state 
     request.session.pop('target')
     request.session.pop('attempts')
     request.session.pop('status')
