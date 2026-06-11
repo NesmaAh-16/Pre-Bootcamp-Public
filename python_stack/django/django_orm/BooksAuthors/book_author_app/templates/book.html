@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width, initial-scale=1.0">
+    <title>Book page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>All the Books</h1> 
+        <table> 
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in all_books %}
+                <tr>
+                    <td>{{book.id}}</td>
+                    <td>{{book.title}}</td>
+                    <td><a href="/show_book/{{ book.id }}">Views</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h1>Add a Book</h1>
+        <form action="create_book" method="POST">
+            {% csrf_token %}
+            <div class="form-grid">
+                <div class="input">
+                    <label>Title</label>
+                    <input type="text" name="title">
+                </div>
+                <div class="input">
+                    <label>Description</label>
+                    <textarea name="desc"></textarea>
+                </div>
+            </div>
+            <div class="button-row">
+                <button type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

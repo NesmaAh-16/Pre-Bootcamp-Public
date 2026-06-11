@@ -6,15 +6,6 @@ def index(request):
     }
     return render(request,"index.html",context)
 
-from django.shortcuts import render, redirect
-from .models import User
-
-def index(request):
-    context = {
-        "all_users": User.objects.all()
-    }
-    return render(request, "index.html", context)
-
 def create_user(request):
     if request.method == "POST":
         User.objects.create(

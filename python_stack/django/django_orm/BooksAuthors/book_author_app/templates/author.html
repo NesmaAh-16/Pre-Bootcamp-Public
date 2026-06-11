@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width, initial-scale=1.0">
+    <title>Author page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>All the Authors</h1> 
+        <table> 
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for author in all_authors %}
+                <tr>
+                    <td>{{author.id}}</td>
+                    <td>{{author.first_name}} {{author.last_name}}</td>
+                    <td><a href="/show_author/{{ author.id }}">Views</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h1>Add a Book</h1>
+        <form action="create_author" method="POST">
+            {% csrf_token %}
+            <div class="form-grid">
+                <div class="input">
+                    <label>First name</label>
+                    <input type="text" name="first_name">
+                </div>
+                <div class="input">
+                    <label>Last name</label>
+                    <input type="text" name="last_name">
+                </div>
+                <div class="input">
+                    <label>Notes</label>
+                    <textarea name="notes"></textarea>
+                </div>
+            </div>
+            <div class="button-row">
+                <button type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

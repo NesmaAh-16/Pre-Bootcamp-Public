@@ -1,0 +1,24 @@
+<div style="display: flex; gap: 50px;">
+    <div>
+        <h1>Add an Author</h1>
+        <form action="/add_author" method="POST">
+            {% csrf_token %}
+            First Name: <input type="text" name="first_name"><br>
+            Last Name: <input type="text" name="last_name"><br>
+            Notes: <textarea name="notes"></textarea><br>
+            <button>Add</button>
+        </form>
+    </div>
+    <table border="1">
+        <thead><tr><th>ID</th><th>Name</th><th>Action</th></tr></thead>
+        <tbody>
+            {% for author in all_authors %}
+            <tr>
+                <td>{{author.id}}</td>
+                <td>{{author.first_name}} {{author.last_name}}</td>
+                <td><a href="/authors/{{author.id}}">View</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
