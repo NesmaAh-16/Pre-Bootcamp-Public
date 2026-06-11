@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid black;
+    margin-bottom: 30px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+thead {
+    background-color: #d3d3d3; 
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+hr {
+    border: 1px solid black;
+    margin: 40px 0;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px;
+    width: 60%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input {
+    border: 2px solid black;
+    padding: 2px;
+    width: 150px;
+}
+
+.button-row {
+    margin-top: 20px;
+}
+
+button {
+    background: white;
+    border: 2px solid black;
+    padding: 5px 20px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px black; 
+}
+
+button:active {
+    box-shadow: none;
+    transform: translate(2px, 2px);
+}
