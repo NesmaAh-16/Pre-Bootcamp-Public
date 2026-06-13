@@ -30,10 +30,7 @@
                     <td>
                         <a href="/shows/{{ show.id }}">Show</a> | 
                         <a href="/shows/{{ show.id }}/edit">Edit</a> | 
-                        <form action="/shows/{{ show.id }}/destroy" method="POST" style="display:inline;">
-                            {% csrf_token %}
-                            <button type="submit" style="background:none; border:none; color:blue; cursor:pointer; text-decoration:underline; padding:0;">Delete</button>
-                        </form>
+                        <a href="/shows/{{ show.id }}/destroy">Delete</a>
                     </td>
                 </tr>
                 {% endfor %}

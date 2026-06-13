@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.http import JsonResponse
 from .models import Show
 
 def first(request):
@@ -14,6 +16,12 @@ def new(request):
     return render(request, "new.html")
 
 def create(request):
+    errors = Show.objects.basic_validator(request.POST)
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect('/shows/new')
+    
     if request.method =='POST':
         new_show = Show.objects.create(
         title=request.POST['title'],
@@ -36,6 +44,12 @@ def edit(request, id):
     return render(request, "edit.html", context)
 
 def update(request, id):
+    errors = Show.objects.basic_validator(request.POST, current_show_id=id) 
+    if len(errors) > 0:
+        for key, value in errors.items():
+            messages.error(request, value)
+        return redirect(f'/shows/{id}/edit')
+    
     if request.method =='POST':
         show_to_update = Show.objects.get(id=id)
         show_to_update.title = request.POST['title']
@@ -49,3 +63,4 @@ def destroy(request, id):
     show_to_delete = Show.objects.get(id=id)
     show_to_delete.delete()
     return redirect("/shows")
+

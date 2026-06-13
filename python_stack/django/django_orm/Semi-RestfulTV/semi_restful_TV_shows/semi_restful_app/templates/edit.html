@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    {% if messages %}
+    <ul style="background-color: #ffdce0; color: #a94442; padding: 15px; list-style: none; border-radius: 5px;">
+        {% for message in messages %}
+            <li><strong>Error:</strong> {{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <div class="header">
         <h1>Edit Show {{ show.id }} <a href="/shows">Go Back</a></h1>
     </div>
