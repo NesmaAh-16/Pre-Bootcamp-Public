@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+    <h1>{{ course.name }}</h1>
+    <p>{{ course.description.content }}</p>
+    <h3>Comments :</h3>
+    <ul> 
+    {% for comment in course.comments.all %}
+        <li>{{ comment.content  }} <small>({{ comment.created_at }})</small></li>
+        {% empty %}
+        <li>No comments yet.</li>
+    {% endfor %}
+    </ul>
+    <hr>
+     {% if messages %}
+    <ul style="background-color: #ffdce0; color: #a94442; padding: 15px; list-style: none; border-radius: 5px;">
+        {% for message in messages %}
+            <li><strong>Error:</strong> {{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h3>Add comment to course {{course.id}}</h3>
+    <form action="/courses/comments/{{ course.id }}" method="POST">
+        {% csrf_token %}
+        <div class="input">
+                    <label>content</label>
+                    <textarea name="content"></textarea>
+                </div>
+        <button type="submit" style="color: rgb(251, 252, 251); background-color: rgb(1, 99, 27);">Add Comment</button>
+    </form>
+    <a href="/">Back to Courses</a>
+    </div>
+</body>
+</html>

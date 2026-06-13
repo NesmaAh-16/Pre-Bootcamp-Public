@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Courses</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <div class="container">
     <h2>Are you sure you want to delete this course?</h2>
     <p>Name: {{ course.name }}</p>
-    <p>Description: {{ course.description }}</p>
-    <form action="/" method="POST">
-        {% csrf_token %}
-        <button type="submit" style="color: rgb(20, 21, 20); background-color: rgb(96, 97, 96);">No</button>
-    </form>
+    <p>Description: {{ course.description.content }}</p>
+    <a href="/"><button style="background-color: gray; color: white;">No</button></a>
     <form action="/courses/{{ course.id }}/destroy" method="POST">
         {% csrf_token %}
         <button type="submit" style="color: rgb(251, 252, 251); background-color: rgb(110, 5, 5);">Yes, I want to delete it</button>
     </form>
+    </div>
 </body>
 </html>
