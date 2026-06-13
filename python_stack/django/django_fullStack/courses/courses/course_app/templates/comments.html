@@ -20,7 +20,7 @@
     {% endfor %}
     </ul>
     <hr>
-     {% if messages %}
+    {% if messages %}
     <ul style="background-color: #ffdce0; color: #a94442; padding: 15px; list-style: none; border-radius: 5px;">
         {% for message in messages %}
             <li><strong>Error:</strong> {{ message }}</li>
@@ -32,7 +32,7 @@
         {% csrf_token %}
         <div class="input">
                     <label>content</label>
-                    <textarea name="content"></textarea>
+                    <textarea name="content" required></textarea>
                 </div>
         <button type="submit" style="color: rgb(251, 252, 251); background-color: rgb(1, 99, 27);">Add Comment</button>
     </form>

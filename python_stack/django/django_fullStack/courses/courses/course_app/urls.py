@@ -7,5 +7,7 @@ urlpatterns = [
     path('create_course',views.create_course),
     path('courses/destroy/<int:id>',views.remove),
     path('courses/<int:id>/destroy', views.destroy), 
-    path('courses/comments/<int:id>', views.comments)
+    path('comments/<int:id>', views.comments),
+    path('courses/comments/<int:id>', views.create_comments)
+    
 ]

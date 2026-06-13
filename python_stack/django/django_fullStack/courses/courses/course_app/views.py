@@ -35,19 +35,24 @@ def destroy(request , id):
     return redirect('/')
 
 def comments(request, id):
-    errors = Course.objects.basic_validator(request.POST)
+    course=Course.objects.get(id=id)
+    context = {
+        "course": course
+        }
+    return render(request, "comments.html", context)
+
+
+def create_comments(request, id): 
+    errors = Comment.objects.basic_validator(request.POST)
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect(f'/courses/comments/{id}')
+        return redirect(f'/comments/{id}')
     
-    
-    course = Course.objects.get(id=id)
     if request.method == "POST":
+        course_to_comment = Course.objects.get(id=id)
         Comment.objects.create(
             content=request.POST['content'],
-            course=course)
-        return redirect(f'/courses/comments/{id}')
-    
-    context = {"course": course}
-    return render(request, "comments.html", context)
+            course=course_to_comment
+            ) 
+    return redirect(f'/comments/{id}')
