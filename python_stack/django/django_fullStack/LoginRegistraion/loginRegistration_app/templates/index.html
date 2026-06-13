@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .card { border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Message Display -->
+        {% if messages %}
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                {% for message in messages %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row justify-content-center g-4">
+            <!-- Registration Card -->
+            <div class="col-md-5">
+                <div class="card h-100">
+                    <div class="card-body p-4">
+                        <h2 class="card-title text-primary mb-4">Registration</h2>
+                        <form action="/register" method="POST" id="regForm">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label class="form-label">First Name</label>
+                                <input type="text" name="first_name" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" name="last_name" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" id="emailField" class="form-control" required>
+                                <div id="emailMsg" class="form-text text-danger fw-bold"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Birthday</label>
+                                <input type="date" name="birthday" class="form-control" required>
+                                <div class="form-text">Must be at least 13 years old.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Password</label>
+                                <input type="password" name="password" class="form-control" minlength="8" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Confirm Password</label>
+                                <input type="password" name="confirm_password" class="form-control" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login Card -->
+            <div class="col-md-5">
+                <div class="card h-100">
+                    <div class="card-body p-4">
+                        <h2 class="card-title text-success mb-4">Login</h2>
+                        <form action="/login" method="POST">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Password</label>
+                                <input type="password" name="password" class="form-control" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success">Log In</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // AJAX: Check Email Uniqueness while typing
+        document.getElementById('emailField').addEventListener('input', function(e) {
+            if (e.target.value.length > 3) {
+                fetch(`/check_email?email=${e.target.value}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        const msg = document.getElementById('emailMsg');
+                        msg.innerText = data.exists ? "⚠️ Email is already taken!" : "";
+                    })
+            }
+        });
+
+        // Client-side Password Matching
+        document.getElementById('regForm').onsubmit = function(e) {
+            const pw = this.password.value;
+            const confirm = this.confirm_password.value;
+            if(pw !== confirm) {
+                alert("Passwords do not match!");
+                e.preventDefault();
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
