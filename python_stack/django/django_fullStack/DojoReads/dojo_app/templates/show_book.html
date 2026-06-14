@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h2>{{ book.title }}</h2>
+        <h5 class="text-muted mb-4">Author: {{ book.author.name }}</h5>
+        
+        <hr>
+        <h4>Reviews:</h4>
+        {% for review in book.reviews.all %}
+        <div class="border-bottom py-3">
+            <p class="mb-1 text-warning">
+                Rating: 
+                {% for i in "12345" %}
+                    <span class="{% if i|add:0 <= review.rating %}star-filled{% else %}star-empty{% endif %}">★</span>
+                {% endfor %}
+            </p>
+            <p>
+                <a href="/users/{{ review.user.id }}">{{ review.user.alias }}</a> says: 
+                <span>{{ review.content }}</span>
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">Posted on {{ review.created_at|date:"F d, Y" }}</small>
+                {% if review.user.id == request.session.user_id %}
+                <a href="/reviews/{{ review.id }}/delete" class="text-danger small" onclick="return confirm('Delete this review?')">Delete this Review</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Side Form: Add a Review -->
+    <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+            <h5>Add a Review:</h5>
+            <form action="/books/{{ book.id }}/review" method="POST">
+                {% csrf_token %}
+                <textarea name="review" class="form-control mb-3" rows="5" placeholder="Write your review here..."></textarea>
+                <div class="mb-3 d-flex align-items-center">
+                    <label class="me-2">Rating:</label>
+                    <select name="rating" class="form-select">
+                        <option value="5">5</option>
+                        <option value="4">4</option>
+                        <option value="3">3</option>
+                        <option value="2">2</option>
+                        <option value="1">1</option>
+                    </select>
+                </div>
+                <button class="btn btn-dark w-100">Submit Review</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

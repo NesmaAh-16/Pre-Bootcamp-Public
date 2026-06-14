@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Welcome, {{ user.alias }}!</h1>
+</div>
+
+<div class="row">
+    <!-- Recent Reviews -->
+    <div class="col-md-7">
+        <h5>Recent Book Reviews:</h5>
+        {% for review in recent_reviews %}
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="/books/{{ review.book.id }}" class="text-decoration-none">{{ review.book.title }}</a>
+                </h5>
+                <p class="mb-1 text-warning">
+                    Rating: 
+                    {% for i in "12345" %}
+                        <span class="{% if i|add:0 <= review.rating %}star-filled{% else %}star-empty{% endif %}">★</span>
+                    {% endfor %}
+                </p>
+                <p class="card-text">
+                    <a href="/users/{{ review.user.id }}">{{ review.user.alias }}</a> says: 
+                    <em>"{{ review.content }}"</em>
+                </p>
+                <small class="text-muted">Posted on {{ review.created_at|date:"F d, Y" }}</small>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Scrollable Book List -->
+    <div class="col-md-5">
+        <div class="card shadow-sm">
+            <div class="card-header bg-white">
+                <h5 class="mb-0">Other Books with Reviews:</h5>
+            </div>
+            <div class="list-group list-group-flush" style="max-height: 400px; overflow-y: auto;">
+                {% for book in other_books %}
+                <a href="/books/{{ book.id }}" class="list-group-item list-group-item-action">
+                    {{ book.title }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

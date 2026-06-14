@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2 text-center">
+                <div class="bg-secondary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 2rem;">
+                    {{ user.alias|first|upper }}
+                </div>
+            </div>
+            <div class="col-md-10">
+                <h3>User Alias: {{ user.alias }}</h3>
+                <p class="mb-1"><strong>Name:</strong> {{ user.name }}</p>
+                <p class="mb-1"><strong>Email:</strong> {{ user.email }}</p>
+                <p class="mb-1"><strong>Total Reviews:</strong> {{ user.reviews.count }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5">
+    <h5>Posted Reviews on the following books:</h5>
+    <ul class="list-group list-group-flush mt-3">
+        {% for review in user.reviews.all %}
+        <li class="list-group-item bg-transparent">
+            <a href="/books/{{ review.book.id }}">{{ review.book.title }}</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item bg-transparent text-muted">No reviews posted yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
