@@ -1,59 +1,46 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>CodingDojo Wall</title>
-    <style>
-        .message { margin-bottom: 20px; border-bottom: 1px solid #ccc; }
-        .comment { margin-left: 50px; font-size: 0.9em; }
-        .delete-btn { color: red; text-decoration: none; font-size: 0.8em; }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>CodingDojo Wall</h1>
-        <p>Welcome {{user.first_name}}! <a href="/logout">log off</a></p>
-    </header>
-
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color: red;">{{message}}</p>
-        {% endfor %}
-    {% endif %}
-
-    <h3>Post a message</h3>
-    <form action="/post_message" method="post">
-        {% csrf_token %}
-        <textarea name="message" rows="4" cols="50"></textarea><br>
-        <button type="submit">Post a message</button>
-    </form>
-
-    <div id="wall-feed">
-        {% for msg in all_messages %}
-            <div class="message">
-                <h4>{{msg.user.first_name}} {{msg.user.last_name}} - {{msg.created_at|date:"F jS Y"}}</h4>
-                <p>{{msg.message}}</p>
-                
-                <!-- Ninja/Sensei Bonus Delete Link -->
-                {% if msg.user.id == request.session.user_id %}
-                    <a href="/delete_message/{{msg.id}}" class="delete-btn">Delete Message</a>
-                {% endif %}
-
-                <!-- Comment Loop (Note: oldest comments first as per sticky note) -->
-                {% for cmt in msg.comments.all|dictsort:"created_at" %}
-                    <div class="comment">
-                        <h5>{{cmt.user.first_name}} {{cmt.user.last_name}} - {{cmt.created_at|date:"F jS Y"}}</h5>
-                        <p>{{cmt.comment}}</p>
-                    </div>
-                {% endfor %}
-
-                <form action="/post_comment/{{msg.id}}" method="post" style="margin-left: 50px;">
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <!-- Post Message Section -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h4>Post a message</h4>
+                <form action="/post_message" method="post">
                     {% csrf_token %}
-                    <p>Post a comment</p>
-                    <textarea name="comment" rows="2" cols="40"></textarea><br>
-                    <button type="submit" style="background-color: green; color: white;">Post a comment</button>
+                    <textarea name="message" class="form-control mb-2"></textarea>
+                    <button class="btn btn-primary float-end">Post</button>
                 </form>
             </div>
+        </div>
+
+        {% for msg in all_messages %}
+        <div class="card mb-3 border-0 shadow-sm">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h5 class="fw-bold">{{msg.user.first_name}} {{msg.user.last_name}} <small class="text-muted">{{msg.created_at}}</small></h5>
+                    {% if msg.user.id == request.session.user_id %}
+                    <a href="/delete_message/{{msg.id}}" class="text-danger">delete</a>
+                    {% endif %}
+                </div>
+                <p>{{msg.message}}</p>
+
+                <!-- Comments -->
+                <div class="ms-5">
+                    {% for cmt in msg.comments.all %}
+                    <div class="bg-light p-2 rounded mb-2">
+                        <strong>{{cmt.user.first_name}}</strong>: {{cmt.comment}}
+                    </div>
+                    {% endfor %}
+                    <form action="/post_comment/{{msg.id}}" method="post">
+                        {% csrf_token %}
+                        <textarea name="comment" class="form-control mb-1" rows="1"></textarea>
+                        <button class="btn btn-success btn-sm">Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
         {% endfor %}
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
